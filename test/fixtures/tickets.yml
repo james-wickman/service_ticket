@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ticket_number: MyString
+  assigned_to: MyString
+  primary_problem: MyString
+  secondary_problem: MyString
+  problem_reported: MyString
+  equipment_sent: MyString
+  work_performed: MyString
+  time_dispatched: 2017-04-08 13:58:29
+  time_arrival_on_site: 2017-04-08 13:58:29
+  time_departed_site: 2017-04-08 13:58:29
+  total_site_time: 2017-04-08 13:58:29
+  complete: false
+
+two:
+  ticket_number: MyString
+  assigned_to: MyString
+  primary_problem: MyString
+  secondary_problem: MyString
+  problem_reported: MyString
+  equipment_sent: MyString
+  work_performed: MyString
+  time_dispatched: 2017-04-08 13:58:29
+  time_arrival_on_site: 2017-04-08 13:58:29
+  time_departed_site: 2017-04-08 13:58:29
+  total_site_time: 2017-04-08 13:58:29
+  complete: false

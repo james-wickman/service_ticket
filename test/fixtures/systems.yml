@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cs: MyString
+  account: MyString
+  rcvr: MyString
+  instal_date: MyString
+  sales_name: MyString
+  instal_tech: MyString
+
+two:
+  cs: MyString
+  account: MyString
+  rcvr: MyString
+  instal_date: MyString
+  sales_name: MyString
+  instal_tech: MyString
