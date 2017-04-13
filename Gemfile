@@ -10,6 +10,9 @@ end
 gem 'rails', '~> 5.0.2'
 gem 'bootstrap'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'pdf-reader'
+gem 'json'
+gem 'pdftk'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

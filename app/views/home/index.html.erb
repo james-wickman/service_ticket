@@ -1,7 +1,167 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<p>shows all data for service tickets</p>
 
-<% @tickets.picture.each do |picture| %>
-  <%= image_tag picture.url(:large) %>
+<% @tickets_array.each do |pdf_text| %>
+	<% pdf_text.each_with_index do |text, i| %>
+		<% if text.include? "Panel Type:" %>
+			<%text.slice! "Panel Type:"%>
+			<h1>Panel Type: <%=text%></h1>
+		<% elsif text.include? "System Type:"%>
+			<%text.slice! "System Type:"%>
+			<h1>System Type: <%=text%></h1><hr>
+		<% elsif text.include? "TICKET #:"%>
+			<%text.slice! "TICKET #:"%>
+			<h1>Ticket #: <%=text.gsub(/\s+/, "")%></h1><hr>
+		<% elsif text.include? "Date Ticket Created:"%>
+			<%text.slice! "Date Ticket Created:"%>
+			<h1>Date Ticket Created: <%=text.gsub(/\s+/, "")%></h1><hr>
+		<% elsif text.include? "CS Number:"%>
+			<%text.slice! "CS Number:"%>
+			<h1>CS Number: <%=text.gsub(/\s+/, "")%></h1><hr>
+		<% elsif text.include? "Assigned To:"%>
+			<%text.slice! "Assigned To:"%>
+			<h1>Assigned To: <%=text%></h1><hr>
+		<% elsif text.include? "Rcvr #:"%>
+			<%text.slice! "Rcvr #:"%>
+			<h1>Rcvr #: <%=text.gsub(/\s+/, "")%></h1><hr>
+		<% elsif text.include? "Account #"%>
+			<%text.slice! "Account #"%>
+			<h1>Account # <%=text.gsub(/\s+/, "")%></h1><hr>
+		<% elsif text.include? "Customer Name:"%>
+			<%text.slice! "Customer Name:"%>
+			<h1>Customer Name: <%=text%></h1><hr>
+		<% elsif text.include? "Customer Phone:"%>
+			<%text.slice! "Customer Phone:"%>
+			<h1>Customer Phone: <%=text.gsub(/\s+/, "")%></h1><hr>
+		<% elsif text.include? "Primary Problem:"%>
+			<%text.slice! "Primary Problem:"%>
+			<h1>Primary Problem: <%=text%></h1><hr>
+		<% elsif text.include? "Customer Address"%>
+			<h1>Customer Address: <br> <%=pdf_text[i+2]%><%=pdf_text[i+4]%></h1><hr>
+		<% elsif text.include? "Secondary Problem:"%>
+			<%text.slice! "Secondary Problem:"%>
+			<h1>Secondary Problem: <%=text%></h1><hr>
+		<% elsif text.include? "Problem Reported :"%>
+			<%text.slice! "Problem Reported :"%>
+			<h1>Problem Reported: <%=text%>
+				<% if !pdf_text[i+2].include? "Install Date:"%>
+					<%= pdf_text[i+2] %>
+					<% if !pdf_text[i+3].include? "Install Date:"%>
+						<%= pdf_text[i+3] %>
+						<% if !pdf_text[i+4].include? "Install Date:"%>
+							<%= pdf_text[i+4] %>
+						<% end %>
+					<% end %>
+				<% end %>
+			</h1><hr>
+		<% elsif text.include? "Install Date:"%>
+			<%text.slice! "Install Date:"%>
+			<h1>Install Date: <%=text%></h1><hr>
+		<% elsif text.include? "Sales Name:"%>
+			<%text.slice! "Sales Name:"%>
+			<h1>Sales Name: <%=text%></h1><hr>
+		<% elsif text.include? "Install Tech:"%>
+			<%text.slice! "Install Tech:"%>
+			<h1>Install Tech: <%=text%></h1><hr>
+		<% elsif text.include? "Time Dispatched:"%>
+			<%text.slice! "Time Dispatched:"%>
+			<h1>Time Dispatched: <%=pdf_text[i+1]%></h1><hr>
+		<% elsif text.include? "Time Arrived on Site:"%>
+			<%text.slice! "Time Arrived on Site:"%>
+			<h1>Time Arrived on Site: <%=text%></h1><hr>
+		<% elsif text.include? "Time Departed Site:"%>
+			<%text.slice! "Time Departed Site:"%>
+			<h1>Time Departed Site: <%=text%></h1><hr>
+		<% elsif text.include? "Equipment Sent:"%>
+			<%text.slice! "Equipment Sent:"%>
+			<h1>Equipment Sent: <%=text%>
+			<% if pdf_text[i+2].to_i == 0  %>
+				<%=pdf_text[i+2]%>
+			<% end %>
+			</h1><hr>
+		<% elsif text.include? "Total Site Time:"%>
+			<%text.slice! "Total Site Time:"%>
+			<% if pdf_text[i+1].to_i != 0%>
+				<h1>Total Site Time: <%=pdf_text[i+1]%></h1><hr>
+			<%elsif pdf_text[i+2].to_i != 0  %>
+				<h1>Total Site Time: <%=pdf_text[i+2]%></h1><hr>
+			<% end %>
+		<% elsif text.include? "Work Performed:"%>
+			<%text.slice! "Work Performed:"%>
+			<h1>Work Performed: <%=text%>
+				<% if !pdf_text[i+1].include? "Equipment Used:" %>
+					<%= pdf_text[i+1] %>
+					<% if !pdf_text[i+2].include? "Equipment Used:"  %>
+						<%= pdf_text[i+2] %>
+						<% if !pdf_text[i+3].include? "Equipment Used:"  %>
+							<%= pdf_text[i+3] %>
+						<% end %>
+					<% end %>
+				<% end %>
+			</h1><hr>
+		<% elsif text.include? "Extended Price"%>
+			<%text.slice! "Extended Price"%>
+			<h1>Equipment Used:  
+				<% if !pdf_text[i+2].include? "Total Equip" %>
+					Zone: <%= pdf_text[i+2] %><br>
+					<% if !pdf_text[i+3].include? "Total Equip"  %>
+						Description: <%= pdf_text[i+3] %><br>
+						<% if !pdf_text[i+4].include? "Total Equip"  %>
+							quantity: <%= pdf_text[i+4] %><br>
+							<% if !pdf_text[i+5].include? "Equipment Used:"  %>
+								price: <%= pdf_text[i+5] %><br>
+								<% if !pdf_text[i+6].include? "Equipment Used:"  %>
+									Extendended price: <%= pdf_text[i+6] %><br>
+									<% if !pdf_text[i+2+8].include? "Total Equip" %>
+										Zone: <%= pdf_text[i+2+8] %><br>
+										<% if !pdf_text[i+3+8].include? "Total Equip"  %>
+											Description: <%= pdf_text[i+3+8] %><br>
+											<% if !pdf_text[i+4+8].include? "Total Equip"  %>
+												quantity: <%= pdf_text[i+4+8] %><br>
+												<% if !pdf_text[i+5+8].include? "Equipment Used:"  %>
+													price: <%= pdf_text[i+5+8] %><br>
+													<% if !pdf_text[i+6+8].include? "Equipment Used:"  %>
+														Extendended price: <%= pdf_text[i+6] %><br>
+													<% end %>
+												<% end %>
+											<% end %>
+										<% end %>
+									<% end %>
+								<% end %>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
+			</h1><hr>
+		<% elsif text.include? "Total Equip"%>
+			<%text.slice! "Total Equip = $"%>
+			<h1>Total Equip = $ <%=text%></h1><hr>
+		<% elsif text.include? "Hours on Site:"%>
+			<%text.slice! "Hours on Site:"%>
+			<h1>Hours on Site: <%=text%></h1><hr>
+		<% elsif text.include? "Hourly Rate:"%>
+			<%text.slice! "Hourly Rate: $"%>
+			<h1>Hourly Rate: $ <%=text%></h1><hr>
+		<% elsif text.include? "Tax:"%>
+			<%text.slice! "Tax: $"%>
+			<h1>Tax: $ <%=text%></h1><hr>
+		<% elsif text.include? "Equipment:"%>
+			<%text.slice! "Equipment: $"%>
+			<h1>Equipment: $ <%=text%></h1><hr>
+		<% elsif text.include? "Trip:"%>
+			<%text.slice! "Trip: $"%>
+			<h1>Trip: $ <%=text%></h1><hr>
+		<% elsif text.include? "Technician Name:"%>
+			<%text.slice! "Technician Name:"%>
+			<h1>Technician Name: <%=pdf_text[i+1]%></h1><hr>
+		<% elsif text.include? "Technician Name:"%>
+			<%text.slice! "Technician Name:"%>
+			<h1>Technician Name: <%=pdf_text[i+1]%></h1><hr>
+		<% end %>
+	<% end %>	
+<% end %>
+<%if @ticket_images %>
+	<% @ticket_images.each do |image| %>
+		<div class="flex">
+			<iframe src="<%= image %>" width="700" height="500"></iframe>
+		</div>
+	<% end %>
 <% end %>
