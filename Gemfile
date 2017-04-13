@@ -13,6 +13,8 @@ gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'pdf-reader'
 gem 'json'
 gem 'pdftk'
+gem 'geocoder'
+gem 'gmaps4rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -41,12 +43,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'restful_routing'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
 
 group :development do
+  gem 'restful_routing'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
