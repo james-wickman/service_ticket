@@ -1,6 +1,27 @@
 
 <% @tickets_array.each do |pdf_text| %>
 	<% pdf_text.each_with_index do |text, i| %>
+		<% if text.include? "Date Ticket Created:"%>
+			<%text.slice! "Date Ticket Created:"%>
+			Date Ticket Created: <%=text.gsub(/\s+/, "")%>
+		<% elsif text.include? "TICKET #:"%>
+			<%text.slice! "TICKET #:"%>
+			Ticket #: <%=text.gsub(/\s+/, "")%>
+		<% elsif text.include? "Customer Name:" %>
+			<%text.slice! "Customer Name:"%>
+			<% if text != "" %>
+				Customer Name: <%=text%>
+			<% end %>
+		<% elsif text.include? "Primary Problem:"%>
+			<%text.slice! "Primary Problem:"%>
+			Primary Problem: <%=text%>
+		<% end %>
+	<% end %>
+	<hr>
+<% end %>
+
+<% @tickets_array.each do |pdf_text| %>
+	<% pdf_text.each_with_index do |text, i| %>
 		<% if text.include? "Panel Type:" %>
 			<%text.slice! "Panel Type:"%>
 			<h1>Panel Type: <%=text%></h1>
@@ -54,7 +75,7 @@
 			</h1><hr>
 		<% elsif text.include? "Install Date:"%>
 			<%text.slice! "Install Date:"%>
-			<h1>Install Date: <%=text%></h1><hr>
+			<h1>Install Date: <%=text.gsub(/\s+/, "")%></h1><hr>
 		<% elsif text.include? "Sales Name:"%>
 			<%text.slice! "Sales Name:"%>
 			<h1>Sales Name: <%=text%></h1><hr>
