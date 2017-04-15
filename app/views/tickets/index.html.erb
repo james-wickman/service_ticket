@@ -11,12 +11,28 @@ $(document).on('turbolinks:load', function() {
 	var handler = Gmaps.build('Google');
 	handler.buildMap({provider: { scrollwheel: true }, internal: {id: 'multi_markers'}}, function(){
 		markers = handler.addMarkers([
-			<% @ticket_coordinates.each do |ticket| %>
+			<% @ticket_coordinates.each_with_index do |ticket, i| %>
 
 			    {
 			      "lat": <%=ticket[0]%>,
 			      "lng": <%=ticket[1]%>,
-			      "infowindow": "<h1>hello</h1>"
+			      "infowindow": `
+					<%@tickets_array[i].each do |text|%>
+						<% if text.include? "Customer Name:"%>
+							<%text.slice! "Customer Name:"%>
+							<%if text != ""%>
+								<h1><%=text%></h1><hr>
+							<% end %>
+						<% elsif text.include? "Customer Phone:"%>
+							<%text.slice! "Customer Phone:"%>
+							<h1><%=text.gsub(/\s+/, "")%></h1><hr>
+						<% elsif text.include? "Primary Problem:"%>
+							<%text.slice! "Primary Problem:"%>
+							<h1><%=text%></h1><hr>
+						
+						<% end %>
+					<% end %>
+			      `
 			    },
 			<% end %>
   ]);

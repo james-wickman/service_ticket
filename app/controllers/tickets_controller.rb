@@ -4,14 +4,13 @@ class TicketsController < ApplicationController
     @ticket_images = []
     @tickets_array = []
     @ticket_coordinates = []
+    @new_tickets_today = 0
     tickets = Ticket.all
     tickets.each do |ticket, i|
       if ticket.image
         pdf_text=[]
-        
         if ticket.image_content_type == "application/pdf"
           reader = PDF::Reader.new(open(ticket.image.path))
-
           reader.pages.each do |page|
             text = []
             page.text.split("    ").each do |c|
@@ -30,10 +29,12 @@ class TicketsController < ApplicationController
         end
       end
     end
-
   end
 
   def show
+    parameters = params[:id]
+    p parameters
+    @current_ticket = Ticket.find(parameters)
   end
 
   def create
