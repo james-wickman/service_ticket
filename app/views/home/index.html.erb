@@ -1,4 +1,236 @@
-
+ 
+ <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+            <div class="visual">
+                <i class="fa fa-comments"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="<%=@ticket_images.length%>">0</span>
+                </div>
+                <div class="desc"> Open Tickets </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 red" href="#">
+            <div class="visual">
+                <i class="fa fa-bar-chart-o"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="0">0</span> </div>
+                <div class="desc"> Scheduled Tickets </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+            <div class="visual">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="<%=@todays_tickets%>">0</span>
+                </div>
+                <div class="desc"> New Tickets Today </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+            <div class="visual">
+                <i class="fa fa-globe"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="<%=@ticket_images.length%>"></span></div>
+                <div class="desc"> Total Tickets </div>
+            </div>
+        </a>
+    </div>
+</div>
+ <div class="row">
+    <div class="col-lg-6 col-xs-12 col-sm-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-bar-chart font-dark hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">Site Visits</span>
+                    <span class="caption-helper">weekly stats...</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group btn-group-devided" data-toggle="buttons">
+                        <label class="btn red btn-outline btn-circle btn-sm active">
+                            <input type="radio" name="options" class="toggle" id="option1">New</label>
+                        <label class="btn red btn-outline btn-circle btn-sm">
+                            <input type="radio" name="options" class="toggle" id="option2">Returning</label>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div id="site_statistics_loading">
+                    <img src="../assets/global/img/loading.gif" alt="loading" /> </div>
+                <div id="site_statistics_content" class="display-none">
+                    <div id="site_statistics" class="chart"> </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+    <div class="col-lg-6 col-xs-12 col-sm-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-share font-red-sunglo hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">Revenue</span>
+                    <span class="caption-helper">monthly stats...</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group">
+                        <a href="" class="btn dark btn-outline btn-circle btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Filter Range
+                            <span class="fa fa-angle-down"> </span>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="javascript:;"> Q1 2014
+                                    <span class="label label-sm label-default"> past </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"> Q2 2014
+                                    <span class="label label-sm label-default"> past </span>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="javascript:;"> Q3 2014
+                                    <span class="label label-sm label-success"> current </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"> Q4 2014
+                                    <span class="label label-sm label-warning"> upcoming </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div id="site_activities_loading">
+                    <img src="../assets/global/img/loading.gif" alt="loading" /> </div>
+                <div id="site_activities_content" class="display-none">
+                    <div id="site_activities" style="height: 228px;"> </div>
+                </div>
+                <div style="margin: 20px 0 10px 30px">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                            <span class="label label-sm label-success"> Revenue: </span>
+                            <h3>$13,234</h3>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                            <span class="label label-sm label-info"> Tax: </span>
+                            <h3>$134,900</h3>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                            <span class="label label-sm label-danger"> Shipment: </span>
+                            <h3>$1,134</h3>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                            <span class="label label-sm label-warning"> Orders: </span>
+                            <h3>235090</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-xs-12 col-sm-12">
+        <div class="portlet light bordered">
+            <div class="portlet-title tabbable-line">
+                <div class="caption">
+                    <i class="icon-bubbles font-dark hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">Tickets</span>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#portlet_comments_1" data-toggle="tab"> Pending </a>
+                    </li>
+                    <li>
+                        <a href="#portlet_comments_2" data-toggle="tab"> Scheduled </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="portlet-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="portlet_comments_1">
+                        <!-- BEGIN: Comments -->
+                        <div class="mt-comments">
+	                        <% @tickets_array.each_with_index do |pdf_text, i| %>
+								<% ticket_date = "" %>
+								<% ticket_number = "" %>
+								<% customer_name = "" %>
+								<% primary_problem = "" %>
+								<% ticket = 0 %>
+								<% pdf_text.each_with_index do |text, i| %>
+									<% if text.include? "Date Ticket Created:"%>
+										<%text.slice! "Date Ticket Created:"%>
+										<% ticket_date = text.gsub(/\s+/, "")%>
+									<% elsif text.include? "TICKET #:"%>
+										<%text.slice! "TICKET #:"%>
+										<% ticket_number = text.gsub(/\s+/, "")%>
+									<% elsif text.include? "Customer Name:" %>
+										<%text.slice! "Customer Name:"%>
+										<% if text != "" %>
+											<% customer_name = text%>
+										<% end %>
+									<% elsif text.include? "Primary Problem:"%>
+										<%text.slice! "Primary Problem:"%>
+										<% primary_problem = text%>
+									<% end %>
+								<% end %>
+								<div class="mt-comment">
+	                        		<div class="mt-comment-body">
+	                        			<div class="mt-comment-info">
+	                                        <span class="mt-comment-author"><%= customer_name %></span>
+	                                        <span class="mt-comment-date"><%= ticket_date %></span>
+	                                    </div>
+	                                    <div class="mt-comment-text"> <%= primary_problem %> </div>
+	                                    <div class="mt-comment-details">
+	                                        <span class="mt-comment-status mt-comment-status-pending">Pending</span>
+	                                        <ul class="mt-comment-actions">
+	                                            <li>
+	                                                <a href="/tickets/<%=@ticket_ids[i]%>">View</a>
+	                                            </li>
+	                                        </ul>
+	                                    </div>
+									</div>
+								</div>
+							<% end %>
+						</div>  
+                        <!-- END: Comments -->
+                    </div>
+                    <div class="tab-pane" id="portlet_comments_2">
+                        <!-- BEGIN: Comments -->
+                        <div class="mt-comments">
+                            <div class="mt-comment">
+                                <div class="mt-comment-body">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END: Comments -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <% @tickets_array.each do |pdf_text| %>
 	<% pdf_text.each_with_index do |text, i| %>
 		<% if text.include? "Date Ticket Created:"%>
@@ -20,127 +252,129 @@
 	<hr>
 <% end %>
 
-<% @tickets_array.each do |pdf_text| %>
-	<% pdf_text.each_with_index do |text, i| %>
-		<% if text.include? "Panel Type:" %>
-			<%text.slice! "Panel Type:"%>
-			<h1>Panel Type: <%=text%></h1>
-		<% elsif text.include? "System Type:"%>
-			<%text.slice! "System Type:"%>
-			<h1>System Type: <%=text%></h1><hr>
-		<% elsif text.include? "TICKET #:"%>
-			<%text.slice! "TICKET #:"%>
-			<h1>Ticket #: <%=text.gsub(/\s+/, "")%></h1><hr>
-		<% elsif text.include? "Date Ticket Created:"%>
-			<%text.slice! "Date Ticket Created:"%>
-			<h1>Date Ticket Created: <%=text.gsub(/\s+/, "")%></h1><hr>
-		<% elsif text.include? "CS Number:"%>
-			<%text.slice! "CS Number:"%>
-			<h1>CS Number: <%=text.gsub(/\s+/, "")%></h1><hr>
-		<% elsif text.include? "Assigned To:"%>
-			<%text.slice! "Assigned To:"%>
-			<h1>Assigned To: <%=text%></h1><hr>
-		<% elsif text.include? "Rcvr #:"%>
-			<%text.slice! "Rcvr #:"%>
-			<h1>Rcvr #: <%=text.gsub(/\s+/, "")%></h1><hr>
-		<% elsif text.include? "Account #"%>
-			<%text.slice! "Account #"%>
-			<h1>Account # <%=text.gsub(/\s+/, "")%></h1><hr>
-		<% elsif text.include? "Customer Name:"%>
-			<%text.slice! "Customer Name:"%>
-			<h1>Customer Name: <%=text%></h1><hr>
-		<% elsif text.include? "Customer Phone:"%>
-			<%text.slice! "Customer Phone:"%>
-			<h1>Customer Phone: <%=text.gsub(/\s+/, "")%></h1><hr>
-		<% elsif text.include? "Primary Problem:"%>
-			<%text.slice! "Primary Problem:"%>
-			<h1>Primary Problem: <%=text%></h1><hr>
-		<% elsif text.include? "Customer Address"%>
-			<h1>Customer Address: <br> <%=pdf_text[i+2]%><%=pdf_text[i+4]%></h1><hr>
-		<% elsif text.include? "Secondary Problem:"%>
-			<%text.slice! "Secondary Problem:"%>
-			<h1>Secondary Problem: <%=text%></h1><hr>
-		<% elsif text.include? "Problem Reported :"%>
-			<%text.slice! "Problem Reported :"%>
-			<h1>Problem Reported: <%=text%>
-				<% if !pdf_text[i+2].include? "Install Date:"%>
-					<%= pdf_text[i+2] %>
-					<% if !pdf_text[i+3].include? "Install Date:"%>
-						<%= pdf_text[i+3] %>
-						<% if !pdf_text[i+4].include? "Install Date:"%>
-							<%= pdf_text[i+4] %>
-						<% end %>
-					<% end %>
-				<% end %>
-			</h1><hr>
-		<% elsif text.include? "Install Date:"%>
-			<%text.slice! "Install Date:"%>
-			<h1>Install Date: <%=text.gsub(/\s+/, "")%></h1><hr>
-		<% elsif text.include? "Sales Name:"%>
-			<%text.slice! "Sales Name:"%>
-			<h1>Sales Name: <%=text%></h1><hr>
-		<% elsif text.include? "Install Tech:"%>
-			<%text.slice! "Install Tech:"%>
-			<h1>Install Tech: <%=text%></h1><hr>
-		<% elsif text.include? "Time Dispatched:"%>
-			<%text.slice! "Time Dispatched:"%>
-			<h1>Time Dispatched: <%=pdf_text[i+1]%></h1><hr>
-		<% elsif text.include? "Time Arrived on Site:"%>
-			<%text.slice! "Time Arrived on Site:"%>
-			<h1>Time Arrived on Site: <%=text%></h1><hr>
-		<% elsif text.include? "Time Departed Site:"%>
-			<%text.slice! "Time Departed Site:"%>
-			<h1>Time Departed Site: <%=text%></h1><hr>
-		<% elsif text.include? "Equipment Sent:"%>
-			<%text.slice! "Equipment Sent:"%>
-			<h1>Equipment Sent: <%=text%>
-			<% if pdf_text[i+2].to_i == 0  %>
-				<%=pdf_text[i+2]%>
-			<% end %>
-			</h1><hr>
-		<% elsif text.include? "Total Site Time:"%>
-			<%text.slice! "Total Site Time:"%>
-			<% if pdf_text[i+1].to_i != 0%>
-				<h1>Total Site Time: <%=pdf_text[i+1]%></h1><hr>
-			<%elsif pdf_text[i+2].to_i != 0  %>
-				<h1>Total Site Time: <%=pdf_text[i+2]%></h1><hr>
-			<% end %>
-		<% elsif text.include? "Work Performed:"%>
-			<%text.slice! "Work Performed:"%>
-			<h1>Work Performed: <%=text%>
-				<% if !pdf_text[i+1].include? "Equipment Used:" %>
-					<%= pdf_text[i+1] %>
-					<% if !pdf_text[i+2].include? "Equipment Used:"  %>
+<% if false %>
+	<% @tickets_array.each do |pdf_text| %>
+		<% pdf_text.each_with_index do |text, i| %>
+			<% if text.include? "Panel Type:" %>
+				<%text.slice! "Panel Type:"%>
+				<h1>Panel Type: <%=text%></h1>
+			<% elsif text.include? "System Type:"%>
+				<%text.slice! "System Type:"%>
+				<h1>System Type: <%=text%></h1><hr>
+			<% elsif text.include? "TICKET #:"%>
+				<%text.slice! "TICKET #:"%>
+				<h1>Ticket #: <%=text.gsub(/\s+/, "")%></h1><hr>
+			<% elsif text.include? "Date Ticket Created:"%>
+				<%text.slice! "Date Ticket Created:"%>
+				<h1>Date Ticket Created: <%=text.gsub(/\s+/, "")%></h1><hr>
+			<% elsif text.include? "CS Number:"%>
+				<%text.slice! "CS Number:"%>
+				<h1>CS Number: <%=text.gsub(/\s+/, "")%></h1><hr>
+			<% elsif text.include? "Assigned To:"%>
+				<%text.slice! "Assigned To:"%>
+				<h1>Assigned To: <%=text%></h1><hr>
+			<% elsif text.include? "Rcvr #:"%>
+				<%text.slice! "Rcvr #:"%>
+				<h1>Rcvr #: <%=text.gsub(/\s+/, "")%></h1><hr>
+			<% elsif text.include? "Account #"%>
+				<%text.slice! "Account #"%>
+				<h1>Account # <%=text.gsub(/\s+/, "")%></h1><hr>
+			<% elsif text.include? "Customer Name:"%>
+				<%text.slice! "Customer Name:"%>
+				<h1>Customer Name: <%=text%></h1><hr>
+			<% elsif text.include? "Customer Phone:"%>
+				<%text.slice! "Customer Phone:"%>
+				<h1>Customer Phone: <%=text.gsub(/\s+/, "")%></h1><hr>
+			<% elsif text.include? "Primary Problem:"%>
+				<%text.slice! "Primary Problem:"%>
+				<h1>Primary Problem: <%=text%></h1><hr>
+			<% elsif text.include? "Customer Address"%>
+				<h1>Customer Address: <br> <%=pdf_text[i+2]%><%=pdf_text[i+4]%></h1><hr>
+			<% elsif text.include? "Secondary Problem:"%>
+				<%text.slice! "Secondary Problem:"%>
+				<h1>Secondary Problem: <%=text%></h1><hr>
+			<% elsif text.include? "Problem Reported :"%>
+				<%text.slice! "Problem Reported :"%>
+				<h1>Problem Reported: <%=text%>
+					<% if !pdf_text[i+2].include? "Install Date:"%>
 						<%= pdf_text[i+2] %>
-						<% if !pdf_text[i+3].include? "Equipment Used:"  %>
+						<% if !pdf_text[i+3].include? "Install Date:"%>
 							<%= pdf_text[i+3] %>
+							<% if !pdf_text[i+4].include? "Install Date:"%>
+								<%= pdf_text[i+4] %>
+							<% end %>
 						<% end %>
 					<% end %>
+				</h1><hr>
+			<% elsif text.include? "Install Date:"%>
+				<%text.slice! "Install Date:"%>
+				<h1>Install Date: <%=text.gsub(/\s+/, "")%></h1><hr>
+			<% elsif text.include? "Sales Name:"%>
+				<%text.slice! "Sales Name:"%>
+				<h1>Sales Name: <%=text%></h1><hr>
+			<% elsif text.include? "Install Tech:"%>
+				<%text.slice! "Install Tech:"%>
+				<h1>Install Tech: <%=text%></h1><hr>
+			<% elsif text.include? "Time Dispatched:"%>
+				<%text.slice! "Time Dispatched:"%>
+				<h1>Time Dispatched: <%=pdf_text[i+1]%></h1><hr>
+			<% elsif text.include? "Time Arrived on Site:"%>
+				<%text.slice! "Time Arrived on Site:"%>
+				<h1>Time Arrived on Site: <%=text%></h1><hr>
+			<% elsif text.include? "Time Departed Site:"%>
+				<%text.slice! "Time Departed Site:"%>
+				<h1>Time Departed Site: <%=text%></h1><hr>
+			<% elsif text.include? "Equipment Sent:"%>
+				<%text.slice! "Equipment Sent:"%>
+				<h1>Equipment Sent: <%=text%>
+				<% if pdf_text[i+2].to_i == 0  %>
+					<%=pdf_text[i+2]%>
 				<% end %>
-			</h1><hr>
-		<% elsif text.include? "Extended Price"%>
-			<%text.slice! "Extended Price"%>
-			<h1>Equipment Used:  
-				<% if !pdf_text[i+2].include? "Total Equip" %>
-					Zone: <%= pdf_text[i+2] %><br>
-					<% if !pdf_text[i+3].include? "Total Equip"  %>
-						Description: <%= pdf_text[i+3] %><br>
-						<% if !pdf_text[i+4].include? "Total Equip"  %>
-							quantity: <%= pdf_text[i+4] %><br>
-							<% if !pdf_text[i+5].include? "Equipment Used:"  %>
-								price: <%= pdf_text[i+5] %><br>
-								<% if !pdf_text[i+6].include? "Equipment Used:"  %>
-									Extendended price: <%= pdf_text[i+6] %><br>
-									<% if !pdf_text[i+2+8].include? "Total Equip" %>
-										Zone: <%= pdf_text[i+2+8] %><br>
-										<% if !pdf_text[i+3+8].include? "Total Equip"  %>
-											Description: <%= pdf_text[i+3+8] %><br>
-											<% if !pdf_text[i+4+8].include? "Total Equip"  %>
-												quantity: <%= pdf_text[i+4+8] %><br>
-												<% if !pdf_text[i+5+8].include? "Equipment Used:"  %>
-													price: <%= pdf_text[i+5+8] %><br>
-													<% if !pdf_text[i+6+8].include? "Equipment Used:"  %>
-														Extendended price: <%= pdf_text[i+6] %><br>
+				</h1><hr>
+			<% elsif text.include? "Total Site Time:"%>
+				<%text.slice! "Total Site Time:"%>
+				<% if pdf_text[i+1].to_i != 0%>
+					<h1>Total Site Time: <%=pdf_text[i+1]%></h1><hr>
+				<%elsif pdf_text[i+2].to_i != 0  %>
+					<h1>Total Site Time: <%=pdf_text[i+2]%></h1><hr>
+				<% end %>
+			<% elsif text.include? "Work Performed:"%>
+				<%text.slice! "Work Performed:"%>
+				<h1>Work Performed: <%=text%>
+					<% if !pdf_text[i+1].include? "Equipment Used:" %>
+						<%= pdf_text[i+1] %>
+						<% if !pdf_text[i+2].include? "Equipment Used:"  %>
+							<%= pdf_text[i+2] %>
+							<% if !pdf_text[i+3].include? "Equipment Used:"  %>
+								<%= pdf_text[i+3] %>
+							<% end %>
+						<% end %>
+					<% end %>
+				</h1><hr>
+			<% elsif text.include? "Extended Price"%>
+				<%text.slice! "Extended Price"%>
+				<h1>Equipment Used:  
+					<% if !pdf_text[i+2].include? "Total Equip" %>
+						Zone: <%= pdf_text[i+2] %><br>
+						<% if !pdf_text[i+3].include? "Total Equip"  %>
+							Description: <%= pdf_text[i+3] %><br>
+							<% if !pdf_text[i+4].include? "Total Equip"  %>
+								quantity: <%= pdf_text[i+4] %><br>
+								<% if !pdf_text[i+5].include? "Equipment Used:"  %>
+									price: <%= pdf_text[i+5] %><br>
+									<% if !pdf_text[i+6].include? "Equipment Used:"  %>
+										Extendended price: <%= pdf_text[i+6] %><br>
+										<% if !pdf_text[i+2+8].include? "Total Equip" %>
+											Zone: <%= pdf_text[i+2+8] %><br>
+											<% if !pdf_text[i+3+8].include? "Total Equip"  %>
+												Description: <%= pdf_text[i+3+8] %><br>
+												<% if !pdf_text[i+4+8].include? "Total Equip"  %>
+													quantity: <%= pdf_text[i+4+8] %><br>
+													<% if !pdf_text[i+5+8].include? "Equipment Used:"  %>
+														price: <%= pdf_text[i+5+8] %><br>
+														<% if !pdf_text[i+6+8].include? "Equipment Used:"  %>
+															Extendended price: <%= pdf_text[i+6] %><br>
+														<% end %>
 													<% end %>
 												<% end %>
 											<% end %>
@@ -150,39 +384,32 @@
 							<% end %>
 						<% end %>
 					<% end %>
-				<% end %>
-			</h1><hr>
-		<% elsif text.include? "Total Equip"%>
-			<%text.slice! "Total Equip = $"%>
-			<h1>Total Equip = $ <%=text%></h1><hr>
-		<% elsif text.include? "Hours on Site:"%>
-			<%text.slice! "Hours on Site:"%>
-			<h1>Hours on Site: <%=text%></h1><hr>
-		<% elsif text.include? "Hourly Rate:"%>
-			<%text.slice! "Hourly Rate: $"%>
-			<h1>Hourly Rate: $ <%=text%></h1><hr>
-		<% elsif text.include? "Tax:"%>
-			<%text.slice! "Tax: $"%>
-			<h1>Tax: $ <%=text%></h1><hr>
-		<% elsif text.include? "Equipment:"%>
-			<%text.slice! "Equipment: $"%>
-			<h1>Equipment: $ <%=text%></h1><hr>
-		<% elsif text.include? "Trip:"%>
-			<%text.slice! "Trip: $"%>
-			<h1>Trip: $ <%=text%></h1><hr>
-		<% elsif text.include? "Technician Name:"%>
-			<%text.slice! "Technician Name:"%>
-			<h1>Technician Name: <%=pdf_text[i+1]%></h1><hr>
-		<% elsif text.include? "Technician Name:"%>
-			<%text.slice! "Technician Name:"%>
-			<h1>Technician Name: <%=pdf_text[i+1]%></h1><hr>
-		<% end %>
-	<% end %>	
-<% end %>
-<%if @ticket_images %>
-	<% @ticket_images.each do |image| %>
-		<div class="flex">
-			<iframe src="<%= image %>" width="700" height="500"></iframe>
-		</div>
+				</h1><hr>
+			<% elsif text.include? "Total Equip"%>
+				<%text.slice! "Total Equip = $"%>
+				<h1>Total Equip = $ <%=text%></h1><hr>
+			<% elsif text.include? "Hours on Site:"%>
+				<%text.slice! "Hours on Site:"%>
+				<h1>Hours on Site: <%=text%></h1><hr>
+			<% elsif text.include? "Hourly Rate:"%>
+				<%text.slice! "Hourly Rate: $"%>
+				<h1>Hourly Rate: $ <%=text%></h1><hr>
+			<% elsif text.include? "Tax:"%>
+				<%text.slice! "Tax: $"%>
+				<h1>Tax: $ <%=text%></h1><hr>
+			<% elsif text.include? "Equipment:"%>
+				<%text.slice! "Equipment: $"%>
+				<h1>Equipment: $ <%=text%></h1><hr>
+			<% elsif text.include? "Trip:"%>
+				<%text.slice! "Trip: $"%>
+				<h1>Trip: $ <%=text%></h1><hr>
+			<% elsif text.include? "Technician Name:"%>
+				<%text.slice! "Technician Name:"%>
+				<h1>Technician Name: <%=pdf_text[i+1]%></h1><hr>
+			<% elsif text.include? "Technician Name:"%>
+				<%text.slice! "Technician Name:"%>
+				<h1>Technician Name: <%=pdf_text[i+1]%></h1><hr>
+			<% end %>
+		<% end %>	
 	<% end %>
 <% end %>
