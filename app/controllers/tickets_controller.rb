@@ -17,6 +17,19 @@ class TicketsController < ApplicationController
               pdf_text.push(*c.split("\n"))
             end
           end
+        else ticket.image_content_type == "application/xlsx"
+        xlsx = Roo::Excelx.new(ticket.image.path)
+        xlsx.each_row_streaming do |row|
+          row.each do |column|
+            if column.cell_value != nil
+              full_sanitizer = Rails::Html::FullSanitizer.new
+              info = full_sanitizer.sanitize(column.cell_value)
+              info.split("    ").each do |c|
+                pdf_text.push(*c.split("\n"))
+              end
+            end
+          end
+        end
           pdf_text = pdf_text.reject { |c| c.empty? }
       end
         @ticket_images.push(ticket.image)
