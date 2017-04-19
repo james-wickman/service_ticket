@@ -7,38 +7,40 @@
 
 
 <script>
-$(document).on('turbolinks:load', function() {
-	var handler = Gmaps.build('Google');
-	handler.buildMap({provider: { scrollwheel: true }, internal: {id: 'multi_markers'}}, function(){
-		markers = handler.addMarkers([
-			<% @ticket_coordinates.each_with_index do |ticket, i| %>
+var handler = Gmaps.build('Google');
+handler.buildMap({provider: { scrollwheel: true }, internal: {id: 'multi_markers'}}, function(){
+	markers = handler.addMarkers([
+		<% @ticket_coordinates.each_with_index do |ticket, i| %>
 
-			    {
-			      "lat": <%=ticket[0]%>,
-			      "lng": <%=ticket[1]%>,
-			      "infowindow": `
+		    {
+		      "lat": <%=ticket[0]%>,
+		      "lng": <%=ticket[1]%>,
+		      "infowindow": `
+			      <div class="push_left">
 					<%@tickets_array[i].each do |text|%>
 						<% if text.include? "Customer Name:"%>
 							<%text.slice! "Customer Name:"%>
 							<%if text != ""%>
-								<h1><%=text%></h1><hr>
+								Customer Name:  <%=text%><hr>
 							<% end %>
 						<% elsif text.include? "Customer Phone:"%>
 							<%text.slice! "Customer Phone:"%>
-							<h1><%=text.gsub(/\s+/, "")%></h1><hr>
+							Customer Phone:  <%=text.gsub(/\s+/, "")%><hr>
 						<% elsif text.include? "Primary Problem:"%>
 							<%text.slice! "Primary Problem:"%>
-							<h1><%=text%></h1><hr>
-						
+							Primary Problem:  <%=text%><hr>
+						<% elsif text.include? "TICKET #:"%>
+							<%text.slice! "TICKET #:"%>
+							Ticket #:  <%=text.gsub(/\s+/, "")%><hr>
 						<% end %>
 					<% end %>
-			      `
-			    },
-			<% end %>
-  ]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
+				</div>
+		      `
+		    },
+		<% end %>
+	]);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
 });
-	console.log(<%=@ticket_coordinates%>)
-});
+console.log(<%=@ticket_coordinates%>)
 </script>

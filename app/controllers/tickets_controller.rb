@@ -18,14 +18,34 @@ class TicketsController < ApplicationController
             end
           end
           pdf_text = pdf_text.reject { |c| c.empty? }
-      end
-        @ticket_images.push(ticket.image)
-        @tickets_array.push(pdf_text)
-        pdf_text.each_with_index do |file, i|
-          if file.include? "Customer Address"
-            customer_cord = Geocoder.coordinates(pdf_text[i+2] + pdf_text[i+4])
-            @ticket_coordinates.push(customer_cord)
+          @ticket_images.push(ticket.image)
+          @tickets_array.push(pdf_text)
+          pdf_text.each_with_index do |file, i|
+            if file.include? "Customer Address"
+              customer_cord = Geocoder.coordinates(pdf_text[i+2] + pdf_text[i+4])
+              @ticket_coordinates.push(customer_cord)
+            end
           end
+        else ticket.image_content_type == "application/xlsx"
+          xlsx = Roo::Excelx.new(ticket.image.path)
+          xlsx.each_row_streaming do |row|
+            row.each do |column|
+              if column.cell_value != nil
+                full_sanitizer = Rails::Html::FullSanitizer.new
+                info = full_sanitizer.sanitize(column.cell_value)
+                info.split("    ").each do |c|
+                  pdf_text.push(*c.split("\n"))
+                end
+              end
+            end
+          end
+          @tickets_array.push(pdf_text)
+            pdf_text.each_with_index do |file, i|
+              if file.include? "Customer Address"
+                customer_cord = Geocoder.coordinates(pdf_text[i+1] + pdf_text[i+6])
+                @ticket_coordinates.push(customer_cord)
+              end
+            end
         end
       end
     end
@@ -33,7 +53,6 @@ class TicketsController < ApplicationController
 
   def show
     parameters = params[:id]
-    p parameters
     @current_ticket = Ticket.find(parameters)
   end
 
