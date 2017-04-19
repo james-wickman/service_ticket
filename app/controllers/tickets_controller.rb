@@ -42,7 +42,6 @@ class TicketsController < ApplicationController
           @tickets_array.push(pdf_text)
             pdf_text.each_with_index do |file, i|
               if file.include? "Customer Address"
-                p pdf_text[i+1] + pdf_text[i+6]
                 customer_cord = Geocoder.coordinates(pdf_text[i+1] + pdf_text[i+6])
                 @ticket_coordinates.push(customer_cord)
               end
@@ -54,7 +53,6 @@ class TicketsController < ApplicationController
 
   def show
     parameters = params[:id]
-    p parameters
     @current_ticket = Ticket.find(parameters)
   end
 

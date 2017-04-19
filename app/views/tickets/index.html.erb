@@ -16,21 +16,25 @@ handler.buildMap({provider: { scrollwheel: true }, internal: {id: 'multi_markers
 		      "lat": <%=ticket[0]%>,
 		      "lng": <%=ticket[1]%>,
 		      "infowindow": `
-				<%@tickets_array[i].each do |text|%>
-					<% if text.include? "Customer Name:"%>
-						<%text.slice! "Customer Name:"%>
-						<%if text != ""%>
-							<h1><%=text%></h1><hr>
+			      <div class="push_left">
+					<%@tickets_array[i].each do |text|%>
+						<% if text.include? "Customer Name:"%>
+							<%text.slice! "Customer Name:"%>
+							<%if text != ""%>
+								Customer Name:  <%=text%><hr>
+							<% end %>
+						<% elsif text.include? "Customer Phone:"%>
+							<%text.slice! "Customer Phone:"%>
+							Customer Phone:  <%=text.gsub(/\s+/, "")%><hr>
+						<% elsif text.include? "Primary Problem:"%>
+							<%text.slice! "Primary Problem:"%>
+							Primary Problem:  <%=text%><hr>
+						<% elsif text.include? "TICKET #:"%>
+							<%text.slice! "TICKET #:"%>
+							Ticket #:  <%=text.gsub(/\s+/, "")%><hr>
 						<% end %>
-					<% elsif text.include? "Customer Phone:"%>
-						<%text.slice! "Customer Phone:"%>
-						<h1><%=text.gsub(/\s+/, "")%></h1><hr>
-					<% elsif text.include? "Primary Problem:"%>
-						<%text.slice! "Primary Problem:"%>
-						<h1><%=text%></h1><hr>
-					
 					<% end %>
-				<% end %>
+				</div>
 		      `
 		    },
 		<% end %>
